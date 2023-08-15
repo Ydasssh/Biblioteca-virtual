@@ -2,10 +2,10 @@ import mysql.connector
 
 def connectionBD(): 
     miConexion = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        passwd='',
-        db='sistema_biblioteca'
+        host='sql10.freesqldatabase.com',
+        user='sql10639823',
+        passwd='V3IbVxEfT1',
+        db='sql10639823'
         )
 
     if miConexion:
