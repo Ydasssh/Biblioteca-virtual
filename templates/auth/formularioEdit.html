@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+  
+      .testbox {
+        width: 100%;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+  
+      .testbox h1 {
+        text-align: center;
+      }
+  
+      .testbox form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+  
+      .testbox input[type="text"],
+      .testbox input[type="password"],
+      .testbox select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .testbox .password-input {
+        position: relative;
+      }
+  
+      .testbox .password-input input[type="password"] {
+        padding-right: 40px;
+      }
+  
+      .testbox .eye-icon {
+        position: absolute;
+        top: 58.6%;
+        right: 35px;
+        transform: translateY(-40%);
+        cursor: pointer;
+        font-size: 20px;
+      }
+  
+      .eye-icon:active i,
+      .eye-icon:focus i {
+        color: blue;
+      }
+  
+      /* Alineación del icono en el centro verticalmente */
+      .testbox .eye-icon i {
+        line-height: 1;
+      }
+  
+      .testbox select {
+        width: calc(100% - 20px);
+        padding: 5px;
+        margin-bottom: 20px;
+      }
+  
+      .testbox .button {
+        width: 100%;
+        padding: 10px;
+        color: #fff;
+        background: #3498db;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+  
+      .testbox .button:hover {
+        background: #0080ff;
+      }
+
+      .btnOK, .btnCancel {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      /* Estilo para el botón "Aceptar" */
+      .btnOK {
+        background-color: #3085d6;
+        color: white;
+      }
+
+      /* Estilo para el botón "Cancelar" */
+      .btnCancel {
+        background-color: #aaa;
+        color: #333;
+        margin-left: 10px; /* Agregamos un espacio entre los botones */
+      }
+
+      /* Estilo al pasar el cursor sobre los botones */
+      .btnOK:hover {
+        background-color: #1e70bf;
+      }
+
+      .btnCancel:hover{
+        background-color: #8a8989;
+      }
+
+      #mensajeEdit{
+        color:Red;
+        font-weight: bold;
+        
+      }
+      .container{
+        position: relative;
+      }
+
+    </style>
+  </head>
+  
+  <body>
+
+    <div id="mensajeEdit">{{ message }}</div>
+
+    <div class="container">
+    <div class="testbox">
+      <form action="{{url_for('editar_usuario')}}" name="FormEditUser" method="POST">
+        <div class="error-message" id="general-error"></div>
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+        <input type="text" name="email" id="email" placeholder="Correo" required>
+          <input type="password" name="password" id="password" placeholder="Contraseña" required>
+          <span class="eye-icon" onclick="togglePasswordVisibility()"><i class="fas fa-eye"></i></span>
+        <select name="mi-combobox" id="mi-combobox">
+          <option value="Normal">Normal</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </form>
+      </div>
+    </div>
+    <button class="btnOK" onclick="enviarFormularioEdit()">Aceptar</button>
+    <button class="btnCancel" onclick="Swal.close()">Cancelar</button>
+    
+    <script src="/static/js/usuarios.js"></script>
+
+  </body>
+  </html>

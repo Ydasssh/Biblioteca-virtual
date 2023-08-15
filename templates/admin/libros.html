@@ -1,0 +1,95 @@
+{% include 'admin/cabecera.html' %}
+
+
+<main class="main">
+    <header>
+
+        <div class="titulo-header">
+            <p class="title">USUARIOS</p>
+        </div>
+
+    </header>
+
+    <div class="div-area">
+        <div class="boton-item">
+            <button class="btn btn-custom" id="btnAgg">Agregar</button>
+        </div>
+    </div>
+
+    <section class="content">
+
+        <div class="container-table">
+            <table class="table table-bordered" width="100%">
+                <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Portada</th>
+                      <th scope="col">Titulo</th>
+                      <th scope="col">Autor</th>
+                      <th scope="col">Genero</th>
+                      <th scope="col">Subgenero</th>
+                      <th scope="col">Año</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for libro in libros %}
+                    
+                    <tr>
+                        <td>{{libro['id']}}</td>
+                        <td>
+                            <img width="100" src="/static/imagenes/{{libro['portada']}}" class="img-fluid rounded-top" alt="">
+                        </td>
+                        <td>{{libro['titulo']}}</td>
+                        <td>{{libro['autor']}}</td>
+                        <td>{{libro['genero']}}</td>
+                        <td>{{libro['subgenero']}}</td>
+                        <td>{{libro['año']}}</td>
+
+
+                        <td class="casilla-editar">
+                            <input value="{{libro['id']}}" type="hidden" name="txtID" id="IDEditarLibros">
+                            <button type="button" class="boton-editar" id="boton-editar"
+                                onclick="editarLibro()">Editar</button>
+                        </td>
+
+
+
+                        <td class="casilla-eliminar">
+                            <form action="/libros/borrar" method="POST" onsubmit="">
+                                <input value="{{libro['id']}}" type="hidden" name="txtID" id="IDEliminarLibros">
+                                <button type="button" class="boton-eliminar"
+                                    onclick="confirmBorrar()">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Portada</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Subgenero</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <footer></footer>
+</main>
+<link rel="stylesheet" href="/static/css/libros.css">
+<script src="/static/js/libros.js"></script>
+</body>
+
+
+
+
+{% include 'admin/pie.html' %}

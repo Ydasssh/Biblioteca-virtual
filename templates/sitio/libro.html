@@ -1,0 +1,34 @@
+{% include 'sitio/cabecera.html' %}
+
+<main class="main">
+    <header>
+        <H1>CATALOGO DE LIBROS</H1>
+    </header>
+    <div>
+
+    </div>
+
+    <section>
+        <div class="book-container">
+            <div class="book-image">
+                <img src="/static/imagenes/{{libro['portada']}}" alt="Portada del libro">
+            </div>
+            <div class="book-info">
+                <h2>{{ libro['titulo'] }}</h2>
+                <p> <strong>Autor: </strong> {{ libro['autor'] }}</p>
+                <p> <strong>Género:  </strong>{{ libro['genero'] }}</p>
+                <p> <strong>Subgénero: </strong> {{ libro['subgenero'] }}</p>
+                <p> <strong>Sinopsis:</strong> {{ libro['descripcion'] }}</p>
+                <p> <strong>Año:</strong> {{ libro['año'] }}</p>
+                <button class="edit-button">Favoritos</button>
+                <button class="delete-button">Me gusta</button>
+            </div>
+        </div>
+        
+    </section>
+    <footer>Footer</footer>
+</main>
+<script src="/static/js/navbar.js"></script>
+<link rel="stylesheet" href="/static/css/mostrarlibro.css">
+
+{% include 'sitio/pie.html' %}

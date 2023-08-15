@@ -1,0 +1,49 @@
+{% include 'sitio/cabecera.html' %}
+
+
+
+<main class="main">
+    <header>
+        <H1></H1>
+    </header>
+    <div>
+
+    </div>
+
+    <section>
+        <div class="row">
+            {% for libro in libros %}
+            <div class="col-md-3">
+                <div class="card">
+                    <center><img aling="center" width="100" class="imgPortada" src="/static/imagenes/{{libro[1]}}" alt="Title"></center>
+                    <div class="card-body">
+                        <h4 class="card-title">{{libro[2]}}</h4>
+                        <p><strong>Autor:</strong>  {{libro[4]}}</p>
+                        <!-- <p><strong>Género:</strong> {{libro[5]}}</p>
+                        <p><strong>Subgénero:</strong> {{libro[6]}}</p> -->
+                        <p><strong>Año:</strong> {{libro[7]}}</p>
+                    </div>
+                    <div class="button-container">
+                        <button class="like-button" onclick="toggleLike(this)">
+                            <i class="bx bx-heart"></i>
+                        </button>
+                        <button class="favorite-button" onclick="toggleFavorite(this)">
+                            <i class="bx bx-star"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+    <footer>Footer</footer>
+</main>
+
+<script src="/static/js/inicio.js"></script>
+<link rel="stylesheet" href="/static/css/inicioLibros.css">
+
+
+
+
+{% include 'sitio/pie.html' %}

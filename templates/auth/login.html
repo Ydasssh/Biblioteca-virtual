@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+
+
+    <div class="containerLogin">
+        <div class="form-box">
+            <form action="{{ url_for('login') }}" 
+            method="POST" autocomplete="off"
+            name="FormfillLogin" onsubmit="return validationLogin()">
+                <h2>Login</h2>
+                <div class="input-box">
+                    <i class='bx bxs-envelope'></i>
+                    <input type="email" name="Email" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" name="Password" placeholder="Password">
+                </div>
+                <div class="button">
+                    <input type="submit" onclick="validationLogin()"class="btn" value="Login">
+                </div>
+                <div class="group">
+                    <span><a href="#">Forgot-password</a></span>
+                    <span><a href="/register">Register</a></span>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    {% if error %}
+    <script>
+        alert2('Correo o contraseña incorrecta','error');
+    </script>
+    {% endif %}
+    
+
+
+
+
+    <div class="containerRegister">
+        <div class="form-box">
+            <form action="{{ url_for('registrarform') }}" name="FormfillRegister" method='POST' onsubmit="return validationRegister()">
+                <h2>Register</h2>
+                <div class="input-box">
+                    <i class='bx bxs-user'></i>
+                    <input type="text" name="Username" placeholder="Username">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-envelope'></i>
+                    <input type="email" name="Email" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" name="Password" placeholder="Password">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock-alt'></i>
+                    <input type="password" name="CPassword" placeholder="Confirm Password">
+                </div>
+                <div class="button">
+                    <input type="submit" class="btn" onclick="validationRegister()" value="Register">
+                </div>
+                <div class="group">
+                    <span><a href="#" onclick="">Forgot-password</a></span>
+                    <span><a href="/login">Login</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/register.js"></script>
+    <script src="/static/js/alerts.js"></script>
+    <script>
+        // Llamar a la función cuando se cargue la página
+        window.onload = mostrarContenedorPorRuta();
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+           {% if category == 'error' %}
+           <script>
+            alert2('{{ message }}','error');
+        </script>>
+           {% endif %}
+           {% if category == 'success' %}
+           <script>
+            alert2('{{ message }}','success');
+        </script>
+           {% endif %}
+        {% endfor %}
+    {% endwith %}
+    
+</body>
+
+</html>

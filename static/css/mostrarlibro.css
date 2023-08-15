@@ -1,0 +1,47 @@
+/* Estilos para el contenedor de libros */
+.book-container {
+    display: flex;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para la imagen del libro */
+.book-image img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+/* Estilos para la información del libro */
+.book-info {
+    flex: 1;
+}
+
+.book-info h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.book-info p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.book-info button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* Estilos para los botones */
+.edit-button {
+    background-color: #28a745;
+    margin-right: 10px;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}

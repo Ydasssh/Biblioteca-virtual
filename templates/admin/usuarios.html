@@ -1,0 +1,92 @@
+{% include 'admin/cabecera.html' %}
+
+    
+        <main class="main">
+            <header>
+
+              <div class="titulo-header">
+                <p class="title">USUARIOS</p>
+              </div>
+
+            </header>
+
+            <div class="div-area">
+              <div class="boton-item" >
+                <button class="btn btn-custom" id="btnAgg" >Agregar</button>
+              </div>
+            </div>
+
+            <section class="content">
+
+              <div class="container-table">
+                <table class="table table-bordered" width="100%">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for usuario in usuarios %}
+                    <tr>
+                      <td>{{usuario['id']}}</td>
+                      <td>{{usuario['nombre_usuario']}}</td>
+                      <td>{{usuario['correo']}}</td>
+                      <td>{{usuario['contraseña']}}</td>
+                      <td>{% if usuario['id_rol'] == 1 %}
+                          admin
+                          {% else %}
+                          normal
+                          {% endif %}
+                      </td>
+                    
+  
+                      <td class="casilla-editar">
+                        <input value="{{usuario['id']}}" type="hidden" name="txtID" id="txtIDEditar">
+                        <button type="button" class="boton-editar" id="boton-editar"
+                        onclick="editarUsuario() ">Editar</button>
+                      </td>
+
+
+
+                      <td class="casilla-eliminar">
+                        <form action="/usuarios/borrar" method="POST">
+                          <input value="{{usuario['id']}}" type="hidden" name="txtID" id="txtIDELiminar">
+                          <button type="button" class="boton-eliminar" onclick="confirmBorrar()">Eliminar</button>
+                      </form>
+                      </td>
+
+
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </section>
+
+            <footer></footer>
+        </main>
+        <link rel="stylesheet" href="/static/css/usuarios.css">
+        <script src="/static/js/usuarios.js"></script>
+  </body>
+
+
+  
+
+{% include 'admin/pie.html' %}
