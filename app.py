@@ -21,7 +21,7 @@ def inicioUsers():
 
     print("---------------------LIBROS INICIO-------------------")
     libros = listaLibros
-    print(libros[0])
+    # print(libros[0])
 
     return render_template('sitio/index.html', libros=libros)
 
